@@ -707,7 +707,13 @@ int create_device_attributes(struct device *dev,
 void remove_device_attributes(struct device *dev,
 	struct device_attribute **attrs);
 int set_3050_bypass(struct inv_gyro_state_s *st, int enable);
-inline s64 get_time_ns(void);
+/* shmds mod 1-6 -> */
+static inline s64 get_time_ns(void){
+	struct timespec ts;
+	ktime_get_ts(&ts);
+	return timespec_to_ns(&ts);
+}
+/* shmds mod 1-6 <- */ 
 int inv_mpu3050_create_sysfs(struct inv_gyro_state_s *st);
 int inv_mpu3050_remove_sysfs(struct inv_gyro_state_s *st);
 int inv_get_accl_bias(struct inv_gyro_state_s *st, int *accl_bias_regular);

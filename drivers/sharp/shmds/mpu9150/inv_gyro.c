@@ -266,13 +266,14 @@ static const struct inv_hw_s hw_info[INV_NUM_PARTS] = {
 	{118, "MPU6050"},
 	{118, "MPU9150"}
 };
-
-s64 get_time_ns(void)
-{
-	struct timespec ts;
-	ktime_get_ts(&ts);
-	return timespec_to_ns(&ts);
-}
+/* shmds del 1-6 -> */
+//s64 get_time_ns(void)
+//{
+//	struct timespec ts;
+//	ktime_get_ts(&ts);
+//	return timespec_to_ns(&ts);
+//}
+/* shmds del 1-6 <- */ 
 
 /**
  *  inv_i2c_read_base() - Read one or more bytes from the device registers.
